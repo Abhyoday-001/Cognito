@@ -1,0 +1,11 @@
+.env
+__pycache__/
+media/
+venv
+.DS_Store
+.vscode/
+parse.py
+update_html.py
+download_photos.py
+download_photos_v2.py
+download_v3.py
