@@ -1,11 +1,24 @@
-.env
-__pycache__/
-media/
-venv
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
 .DS_Store
-.vscode/
-parse.py
-update_html.py
-download_photos.py
-download_photos_v2.py
-download_v3.py
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

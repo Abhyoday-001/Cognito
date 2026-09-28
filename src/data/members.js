@@ -144,3 +144,5 @@ const members = [
     "linkedin": "https://www.linkedin.com/in/yati-mehta-637194322"
   }
 ];
+
+export default members;
