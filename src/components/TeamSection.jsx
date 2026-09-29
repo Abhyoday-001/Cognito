@@ -1,5 +1,5 @@
-import MemberAvatar from './MemberAvatar';
 import Reveal from './Reveal';
+import TierCard from './TierCard';
 
 export default function TeamSection({ teamName, members }) {
   const teamMembers = members.filter((m) => m.team === teamName);
@@ -19,32 +19,14 @@ export default function TeamSection({ teamName, members }) {
         style={tier1.length === 1 ? { justifyContent: 'center' } : undefined}
       >
         {tier1.map((member) => (
-          <div key={member.name} className="tier1-card tier-card" style={{ alignItems: 'center', textAlign: 'center' }}>
-            <MemberAvatar member={member} size={100} />
-            <h3>{member.name}</h3>
-            <p>{member.role}</p>
-            {member.linkedin && (
-              <a href={member.linkedin} className="cta" target="_blank" rel="noopener noreferrer" style={{ padding: '6px 16px', fontSize: 12, marginTop: 14 }}>
-                LinkedIn
-              </a>
-            )}
-          </div>
+          <TierCard key={member.name} member={member} size={100} variantClass="tier1-card" />
         ))}
       </Reveal>
 
       {tier2.length > 0 && (
         <Reveal as="div" className="tier2-grid" variant="right">
           {tier2.map((member) => (
-            <div key={member.name} className="tier2-card tier-card" style={{ alignItems: 'center', textAlign: 'center' }}>
-              <MemberAvatar member={member} size={70} />
-              <h3>{member.name}</h3>
-              <p>{member.role}</p>
-              {member.linkedin && (
-                <a href={member.linkedin} className="cta" target="_blank" rel="noopener noreferrer" style={{ padding: '6px 16px', fontSize: 12, marginTop: 14 }}>
-                  LinkedIn
-                </a>
-              )}
-            </div>
+            <TierCard key={member.name} member={member} size={70} variantClass="tier2-card" />
           ))}
         </Reveal>
       )}

@@ -10,18 +10,18 @@ const EVENTS = [
       "🚀 Successfully completed! Our debut solo AI Build & Ship competition blew everyone away — ₹8,000 prize pool, insane builds under extreme time pressure, and a room full of absolute tech warriors. Execution decided the outcome. What a launch! 🔥",
   },
   {
-    image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&q=80',
+    image: '/operation-red-trophy.webp',
     date: '28 April 2026',
     title: 'Operation Red Trophy',
     dimmed: true,
     description: 'Successfully completed! An incredible experience for everyone involved.',
   },
   {
-    image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&q=80',
+    image: '/techboss.webp',
     date: 'Upcoming',
     title: 'Tech Boss',
     dimmed: false,
-    description: "Our next big upcoming event. Stay tuned for more details!",
+    description: "The Event Management Team is cooking up something fun, so stay tuned!",
   },
 ];
 

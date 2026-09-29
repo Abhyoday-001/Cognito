@@ -1,16 +1,21 @@
 import { useEffect, useMemo, useRef } from 'react';
 import Reveal from './Reveal';
 import MemberAvatar from './MemberAvatar';
+import CardConstellation from './CardConstellation';
 import members from '../data/members';
 
 function buildCoreCommittee() {
-  const president = members.find((m) => m.team === 'Core Committee' && (m.role.includes('President') || m.role.includes('Club Lead')));
+  // Exact-match roles, not .includes() — "Vice President" contains the
+  // substring "President" too, which would otherwise make the
+  // president finder grab the VP instead of the actual president.
+  const president = members.find((m) => m.team === 'Core Committee' && (m.role === 'President' || m.role === 'Club Lead'));
+  const vicePresident = members.find((m) => m.team === 'Core Committee' && m.role === 'Vice President');
   const secretary = members.find((m) => m.team === 'Core Committee' && m.role.includes('Secretary'));
   const leads = members.filter((m) => m.tier === 1 && m.role === 'Lead' && m.team !== 'Core Committee');
 
   const list = [];
   if (president) list.push(president);
-  list.push({ name: 'Vice President (TBD)', role: 'Vice President', photo: null, linkedin: null });
+  list.push(vicePresident || { name: 'Vice President (TBD)', role: 'Vice President', photo: null, linkedin: null });
   if (secretary) list.push(secretary);
   list.push(...leads);
   return list;
@@ -111,14 +116,17 @@ export default function CoreCommitteeCarousel() {
               className="carousel-card"
               ref={(el) => { cardRefs.current[i] = el; }}
             >
+              <CardConstellation />
               <MemberAvatar member={member} size={100} />
               <h3 style={{ textAlign: 'center' }}>{member.name}</h3>
               <p style={{ textAlign: 'center', textTransform: 'uppercase' }}>{roleDisplay(member)}</p>
-              {member.linkedin && (
-                <a href={member.linkedin} className="cta carousel-linkedin" target="_blank" rel="noopener noreferrer">
-                  LinkedIn
-                </a>
-              )}
+              <div className="carousel-linkedin-slot">
+                {member.linkedin && (
+                  <a href={member.linkedin} className="cta carousel-linkedin" target="_blank" rel="noopener noreferrer">
+                    LinkedIn
+                  </a>
+                )}
+              </div>
             </div>
           ))}
         </div>

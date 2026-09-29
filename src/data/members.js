@@ -1,5 +1,13 @@
 const members = [
   {
+    "name": "Abhinav Dhar",
+    "team": "Core Committee",
+    "role": "Vice President",
+    "tier": 1,
+    "photo": "/abhinav-dhar.jpg",
+    "linkedin": "https://www.linkedin.com/in/abhinav-dhar-88573538a?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+  },
+  {
     "name": "Mayur Jain",
     "team": "Photography Team",
     "role": "Lead",

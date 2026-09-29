@@ -60,7 +60,7 @@ export default function ConstellationBackground() {
     const LOGO_REL = LOGO_NODES_RAW.map((n) => ({ dx: n.x - hub.x, dy: n.y - hub.y }));
     const LOGO_SCALE = 150 / rawWidth;
 
-    const IDLE_DELAY = 1700;
+    const IDLE_DELAY = 15000;
     let idleTimer = null;
     let logoState = 'idle'; // idle | forming | formed | unforming
     let activeLogoDots = [];
@@ -269,7 +269,16 @@ export default function ConstellationBackground() {
       idleTimer = setTimeout(startForm, IDLE_DELAY);
     }
 
+    // Measuring document.body/documentElement here is circular: these
+    // absolutely-positioned canvases are themselves part of body's
+    // content, so once they're sized tall, body.scrollHeight reports
+    // that same tallness back forever — the canvases can never shrink
+    // again even after switching to a shorter team tab. Measuring the
+    // actual content wrapper instead (nav is position:fixed, so it's
+    // excluded automatically) breaks that loop.
     function docHeight() {
+      const page = document.querySelector('.page');
+      if (page) return page.scrollHeight;
       const b = document.body, d = document.documentElement;
       return Math.max(b.scrollHeight, d.scrollHeight, d.clientHeight);
     }
@@ -499,6 +508,20 @@ export default function ConstellationBackground() {
       document.addEventListener('mouseout', handleMouseOut);
     }
 
+    // A 'resize' event only fires for viewport changes, but the page's
+    // own height can grow after mount without one — a web font
+    // swapping in, or a member photo finishing its network load, both
+    // reflow the layout taller. Without this, the canvases stay sized
+    // to the shorter pre-load height and the bottom of the page ends
+    // up with no dots at all. Debounced since several images/fonts can
+    // each trigger their own layout change in quick succession.
+    let resizeObserverTimer = null;
+    const resizeObserver = new ResizeObserver(() => {
+      clearTimeout(resizeObserverTimer);
+      resizeObserverTimer = setTimeout(resize, 150);
+    });
+    resizeObserver.observe(document.body);
+
     resize();
 
     return () => {
@@ -510,6 +533,8 @@ export default function ConstellationBackground() {
         window.removeEventListener('mouseleave', handleMouseLeave);
         document.removeEventListener('mouseout', handleMouseOut);
       }
+      resizeObserver.disconnect();
+      clearTimeout(resizeObserverTimer);
       clearTimeout(idleTimer);
       clearTimeout(pendingGapTimer);
       clearTimeout(scrollStopTimer);

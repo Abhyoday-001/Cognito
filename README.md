@@ -4,7 +4,7 @@ The Cognito Club website — a React + Vite single-page site built from the club
 original static HTML/CSS/JS version, with the same design system: an animated
 dot-network nav logo, a full-page cursor-connect constellation background (with
 an idle "cursor forms the logo" easter egg), scroll-reveal section animations,
-and a 3D coverflow-style Core Committee carousel.
+switchable per-team tabs, and a 3D coverflow-style Core Committee carousel.
 
 ## Running locally
 
@@ -27,9 +27,11 @@ Outputs to `dist/`.
 
 - `src/App.jsx` — assembles the page from the section components below.
 - `src/components/` — one component per section (`Hero`, `About`, `Events`,
-  `CoreCommitteeCarousel`, `TeamSection`, `Collaborations`, `Footer`, `Nav`),
-  plus `ConstellationBackground` (the cursor/dots/idle-logo system) and
-  `CognitoLogo` (the animated nav mark).
+  `CoreCommitteeCarousel`, `TeamsTabs` + `TeamSection` + `TierCard`,
+  `Collaborations`, `Footer`, `Nav`), plus `ConstellationBackground` (the
+  cursor/dots/idle-logo system), `CognitoLogo` (the animated nav mark),
+  `CardConstellation` (the corner-dot hover decoration on role cards), and
+  `BoredMark` (the Shorya Saxena easter egg).
 - `src/data/members.js` — the team roster (name, team, role, tier, photo,
   LinkedIn) that drives both the Core Committee carousel and the per-team
   sections.

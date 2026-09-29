@@ -5,7 +5,7 @@
   --muted:#9a9aa0;
   --border:rgba(255,255,255,0.12);
   --border-soft:rgba(255,255,255,0.07);
-  --font-heading: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --font-heading: 'Orbitron', -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   --font-body: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   --tracking-label: 0.08em;
 }
@@ -230,11 +230,12 @@ section p.eyebrow, section h2, section p.section-intro{
   padding:0 20px;
 }
 .hero-heading{
-  font-size:clamp(40px, 8vw, 110px);
-  font-style:italic;
-  line-height:1.1;
+  font-size:clamp(34px, 7vw, 92px);
+  font-style:normal;
+  line-height:1.25;
   margin:0;
   font-weight:800;
+  letter-spacing:0.01em;
   text-transform:none;
   color:var(--fg);
   animation:fadeUp 0.9s cubic-bezier(.16,.8,.24,1) both;
@@ -449,6 +450,7 @@ section p.eyebrow, section h2, section p.section-intro{
   background:var(--bg-elevated);
   display:flex;
   flex-direction:column;
+  flex-shrink:0;
 }
 .member-avatar-img{
   width:100%;
@@ -489,9 +491,89 @@ section p.eyebrow, section h2, section p.section-intro{
 }
 .carousel-track::-webkit-scrollbar{ display:none; }
 .carousel-track:active{ cursor:grabbing; }
+/* A faint radial glow behind the avatar ties every role card into the
+   same HUD/network language as the rest of the site (the hero's
+   radial glow, the constellation dots, the node-link pills) instead
+   of a plain flat panel. */
+.carousel-card, .tier1-card, .tier2-card{
+  position:relative;
+}
+
+/* Four quiet dots at a card's corners, echoing the background
+   constellation — hover the card and they connect into a small
+   network, the same "cursor connects nearby dots" idea, just
+   triggered by hovering the card instead of the cursor's position. */
+.card-constellation{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.cc-cluster{
+  position:absolute;
+  width:30px;
+  height:30px;
+}
+.cc-cluster-tl{ top:8px; left:8px; }
+.cc-cluster-br{ bottom:8px; right:8px; transform:rotate(180deg); }
+.cc-cluster circle{
+  fill:rgba(255,255,255,0.4);
+  transition:fill 0.3s ease;
+}
+.cc-cluster line{
+  stroke:rgba(255,255,255,0.5);
+  stroke-width:1;
+  opacity:0;
+  transition:opacity 0.4s ease;
+}
+.carousel-card:hover .cc-cluster circle, .tier1-card:hover .cc-cluster circle, .tier2-card:hover .cc-cluster circle{
+  fill:rgba(255,255,255,0.9);
+}
+.carousel-card:hover .cc-cluster line, .tier1-card:hover .cc-cluster line, .tier2-card:hover .cc-cluster line{
+  opacity:1;
+}
+
+/* ---- Shorya Saxena hover easter egg ----
+   Keep hovering his card (see the timer in TierCard.jsx) and the
+   whole card fills in with a word spelled the exact same way the nav
+   logo spells its own name — dots first, then the edges between them
+   drawing in a beat later. */
+.bored-reveal{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(10,10,12,0.94);
+  border-radius:14px;
+  opacity:0;
+  animation:boredFadeIn 0.4s ease forwards;
+}
+.bored-svg{
+  width:78%;
+  max-width:220px;
+  color:#fff;
+}
+.bored-svg circle{
+  fill:currentColor;
+  opacity:0;
+  animation:boredDotIn 0.35s ease forwards;
+}
+.bored-svg line{
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  opacity:0;
+  animation:boredLineIn 0.4s ease forwards;
+  animation-delay:0.55s;
+}
+@keyframes boredFadeIn{ to{ opacity:1; } }
+@keyframes boredDotIn{ to{ opacity:1; } }
+@keyframes boredLineIn{ to{ opacity:0.85; } }
+
 .carousel-card{
   flex:0 0 220px;
-  background:var(--bg-elevated);
+  height:250px;
+  background:radial-gradient(ellipse at 50% 32%, rgba(255,255,255,0.07), transparent 60%), var(--bg-elevated);
   border:1px solid var(--border-soft);
   border-radius:14px;
   display:flex;
@@ -500,24 +582,77 @@ section p.eyebrow, section h2, section p.section-intro{
   justify-content:center;
   backface-visibility:hidden;
   will-change:transform;
-  padding:24px;
+  padding:16px;
   box-shadow:0 10px 30px rgba(0,0,0,0.5);
 }
 .carousel-card h3{
   font-size:20px;
   margin:0 0 8px;
+  max-width:100%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 .carousel-card p{
   color:var(--muted);
-  font-size:14px;
+  font-family:ui-monospace, Consolas, monospace;
+  font-size:11px;
   text-transform:uppercase;
-  letter-spacing:0.05em;
+  letter-spacing:0.08em;
   margin:0;
+  max-width:100%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  border:1px solid var(--border-soft);
+  border-radius:999px;
+  padding:3px 12px;
+}
+.carousel-linkedin-slot{
+  margin-top:14px;
+  height:30px;
+  display:flex;
+  align-items:center;
 }
 .carousel-linkedin{
   padding:6px 16px;
   font-size:12px;
-  margin-top:14px;
+}
+
+/* ---------- team tabs ---------- */
+.teams-tabs-wrap{
+  padding:60px 8vw 0;
+  max-width:1280px;
+  margin:0 auto;
+}
+.team-tabs{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.team-tab{
+  background:transparent;
+  border:1px solid var(--border);
+  color:var(--muted);
+  padding:10px 20px;
+  border-radius:999px;
+  font-size:13px;
+  font-family:inherit;
+  letter-spacing:0.02em;
+  cursor:pointer;
+  transition:background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.team-tab:hover{
+  color:var(--fg);
+  border-color:rgba(255,255,255,0.3);
+  transform:translateY(-2px);
+}
+.team-tab.active{
+  background:var(--fg);
+  color:var(--bg);
+  border-color:var(--fg);
+  font-weight:600;
 }
 
 /* ---------- team tiers ---------- */
@@ -532,36 +667,53 @@ section p.eyebrow, section h2, section p.section-intro{
   flex-wrap:wrap;
 }
 .tier1-card{
-  background:var(--bg-elevated);
+  background:radial-gradient(ellipse at 50% 28%, rgba(255,255,255,0.07), transparent 60%), var(--bg-elevated);
   border:1px solid var(--border);
   border-radius:14px;
-  padding:32px;
+  padding:18px;
   display:flex;
   flex-direction:column;
   align-items:center;
   width:280px;
+  transition:transform 0.3s cubic-bezier(.16,.8,.24,1), border-color 0.3s ease;
+}
+.tier1-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,0.28);
 }
 .tier2-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns:repeat(auto-fit, minmax(180px, 220px));
+  justify-content:center;
   gap:22px;
 }
 .tier2-card{
-  background:var(--bg-elevated);
+  background:radial-gradient(ellipse at 50% 28%, rgba(255,255,255,0.06), transparent 60%), var(--bg-elevated);
   border:1px solid var(--border-soft);
   border-radius:14px;
-  padding:24px;
+  padding:16px;
   display:flex;
   flex-direction:column;
+  transition:transform 0.3s cubic-bezier(.16,.8,.24,1), border-color 0.3s ease;
+}
+.tier2-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,0.24);
 }
 .tier-card h3{
-  margin:0 0 4px;
+  margin:0 0 10px;
   font-size:15px;
 }
 .tier-card p{
   margin:0;
   color:var(--muted);
-  font-size:13px;
+  font-family:ui-monospace, Consolas, monospace;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  border:1px solid var(--border-soft);
+  border-radius:999px;
+  padding:3px 12px;
 }
 
 footer{
