@@ -7,21 +7,21 @@ const EVENTS = [
     title: 'Vibeathon',
     dimmed: true,
     description:
-      "🚀 Successfully completed! Our debut solo AI Build & Ship competition blew everyone away — ₹8,000 prize pool, insane builds under extreme time pressure, and a room full of absolute tech warriors. Execution decided the outcome. What a launch! 🔥",
+      "Successfully completed! Our debut solo AI Build & Ship competition blew everyone away — ₹8,000 prize pool, insane builds under extreme time pressure, and a room full of absolute tech warriors. Execution decided the outcome. What a launch!",
   },
   {
     image: '/operation-red-trophy.webp',
     date: '28 April 2026',
     title: 'Operation Red Trophy',
     dimmed: true,
-    description: 'Successfully completed! An incredible experience for everyone involved.',
+    description: 'Successfully completed! Operation Red Trophy brought together brilliant minds for a thrilling display of innovation and strategy. Participants tackled challenging problems, pushing the boundaries of what they could build in a short time. A truly memorable event.',
   },
   {
     image: '/techboss.webp',
     date: 'Upcoming',
     title: 'Tech Boss',
     dimmed: false,
-    description: "The Event Management Team is cooking up something fun, so stay tuned!",
+    description: "The Cognito Team is cooking up something fun, so stay tuned!",
   },
 ];
 

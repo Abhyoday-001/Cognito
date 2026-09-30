@@ -5,7 +5,9 @@ export default function TeamSection({ teamName, members }) {
   const teamMembers = members.filter((m) => m.team === teamName);
   if (teamMembers.length === 0) return null;
 
-  const tier1 = teamMembers.filter((m) => m.tier === 1);
+  const tier1 = teamMembers
+    .filter((m) => m.tier === 1)
+    .sort((a, b) => (a.role === 'Lead' ? -1 : 1) - (b.role === 'Lead' ? -1 : 1));
   const tier2 = teamMembers.filter((m) => m.tier === 2);
 
   return (

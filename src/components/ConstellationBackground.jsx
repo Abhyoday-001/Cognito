@@ -60,7 +60,7 @@ export default function ConstellationBackground() {
     const LOGO_REL = LOGO_NODES_RAW.map((n) => ({ dx: n.x - hub.x, dy: n.y - hub.y }));
     const LOGO_SCALE = 150 / rawWidth;
 
-    const IDLE_DELAY = 15000;
+    const IDLE_DELAY = 1500;
     let idleTimer = null;
     let logoState = 'idle'; // idle | forming | formed | unforming
     let activeLogoDots = [];
