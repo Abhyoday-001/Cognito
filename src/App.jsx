@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import ConstellationBackground from './components/ConstellationBackground';
 import Nav from './components/Nav';
 import Hero from './components/Hero';
@@ -23,6 +24,7 @@ export default function App() {
         <Collaborations />
         <Footer />
       </div>
+      <Analytics />
     </>
   );
 }
