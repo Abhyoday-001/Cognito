@@ -7,14 +7,14 @@ const EVENTS = [
     title: 'Vibeathon',
     dimmed: true,
     description:
-      "Successfully completed! Our debut solo AI Build & Ship competition blew everyone away — ₹8,000 prize pool, insane builds under extreme time pressure, and a room full of absolute tech warriors. Execution decided the outcome. What a launch!",
+      "Our debut AI Build & Ship competition — ₹8,000 prize pool, insane builds, and absolute tech warriors.",
   },
   {
     image: '/operation-red-trophy.webp',
     date: '28 April 2026',
     title: 'Operation Red Trophy',
     dimmed: true,
-    description: 'Successfully completed! Operation Red Trophy brought together brilliant minds for a thrilling display of innovation and strategy. Participants tackled challenging problems, pushing the boundaries of what they could build in a short time. A truly memorable event.',
+    description: 'A thrilling display of innovation and strategy — brilliant minds pushing boundaries under pressure.',
   },
   {
     image: '/techboss.webp',
@@ -28,7 +28,7 @@ const EVENTS = [
     date: 'Upcoming',
     title: 'Cognito Club Recruitment 2026',
     dimmed: false,
-    description: "Join the Cognito Club and turn your skills, ideas, and creativity into real opportunities. Explore domains like Technical, Design, Operations, Social Media, Photography, and Event Management. Open exclusively to 1st and 2nd year students.",
+    description: "Turn your skills and creativity into real opportunities. Open for 1st & 2nd year students.",
   },
 ];
 
