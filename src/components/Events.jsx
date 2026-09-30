@@ -23,6 +23,13 @@ const EVENTS = [
     dimmed: false,
     description: "The Cognito Team is cooking up something fun, so stay tuned!",
   },
+  {
+    image: '/Audition.png',
+    date: 'Upcoming',
+    title: 'Cognito Club Recruitment 2026',
+    dimmed: false,
+    description: "Join the Cognito Club and turn your skills, ideas, and creativity into real opportunities. Explore domains like Technical, Design, Operations, Social Media, Photography, and Event Management. Open exclusively to 1st and 2nd year students.",
+  },
 ];
 
 export default function Events() {
