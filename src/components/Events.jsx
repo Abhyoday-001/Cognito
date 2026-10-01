@@ -17,15 +17,16 @@ const EVENTS = [
     description: 'A thrilling display of innovation and strategy — brilliant minds pushing boundaries under pressure.',
   },
   {
-    image: '/techboss.webp',
-    date: 'Upcoming',
+    image: '/tech boss(1).png',
+    date: '7 September 2026',
     title: 'Tech Boss',
     dimmed: false,
     description: "The Cognito Team is cooking up something fun, so stay tuned!",
+    link: 'https://docs.google.com/forms/d/e/1FAIpQLSd-ALuuZkmMu5jTwwVxU--DEnllE8GaHdypjoWEHQHnbl2kQQ/viewform?usp=publish-editor'
   },
   {
     image: '/Audition.png',
-    date: 'Upcoming',
+    date: '16 September 2026',
     title: 'Cognito Club Recruitment 2026',
     dimmed: false,
     description: "Turn your skills and creativity into real opportunities. Open for 1st & 2nd year students.",
@@ -53,7 +54,12 @@ export default function Events() {
             <img className="card-img" src={ev.image} alt={ev.title} />
             <p className="date">{ev.date}</p>
             <h3>{ev.title}</h3>
-            <p>{ev.description}</p>
+            <p style={{ marginBottom: ev.link ? '16px' : '0' }}>{ev.description}</p>
+            {ev.link && (
+              <a href={ev.link} target="_blank" rel="noreferrer" className="cta" style={{ marginTop: 'auto' }}>
+                Register Now
+              </a>
+            )}
           </Reveal>
         ))}
       </div>

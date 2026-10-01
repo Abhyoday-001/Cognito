@@ -8,13 +8,10 @@ export default function About() {
         More Than a Club. A Community
       </Reveal>
       <Reveal as="p" className="section-intro about-copy" variant="up" delay={0.2}>
-        At <strong>The Cognito Club</strong>, we're more than just a student group—we're a
-        vibrant community at JAIN (Deemed-to-be-University). Here, creativity ignites, ideas
-        become reality, and students from all backgrounds unite to shape the future. Whether
-        you're a fresher, a final-year student, a tech enthusiast, or a creative mind, you're
-        welcome to join us. We provide a space for networking, experimentation, and
-        growth—perfect for puzzle solvers, tech innovators, and anyone eager to connect with
-        bold thinkers.
+        At <strong>The Cognito Club</strong>,We're more than just a student group. We're a vibrant community at JAIN (Deemed-to be University) where creativity, ideas, and collaboration come together. We believe everyone has something unique to contribute, whether you're a fresher finding your way, a final year student, a tech enthusiast, or someone with a creative spark.
+
+        It's a space to meet new people, explore ideas, experiment, build things, and grow together. Whether you enjoy solving puzzles, working on exciting tech projects, or simply connecting with like minded people, there's always a place for you here.
+
       </Reveal>
     </section>
   );
