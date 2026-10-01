@@ -6,7 +6,7 @@ const EVENTS = [
     date: '7 September 2026',
     title: 'Tech Boss',
     dimmed: false,
-    description: "The Cognito Team is cooking up something fun, so stay tuned!",
+    description: "Join the house and put your skills, teamwork, and strategy to the test across exciting technical challenges. Gather your team, register now, and get ready to compete, adapt, and make your way to the finale.",
     link: 'https://docs.google.com/forms/d/e/1FAIpQLSd-ALuuZkmMu5jTwwVxU--DEnllE8GaHdypjoWEHQHnbl2kQQ/viewform?usp=publish-editor'
   },
   {
