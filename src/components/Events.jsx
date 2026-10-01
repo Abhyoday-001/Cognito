@@ -2,21 +2,6 @@ import Reveal from './Reveal';
 
 const EVENTS = [
   {
-    image: '/vibeathon.jpg',
-    date: '9 March 2026',
-    title: 'Vibeathon',
-    dimmed: true,
-    description:
-      "Our debut AI Build & Ship competition — ₹8,000 prize pool, insane builds, and absolute tech warriors.",
-  },
-  {
-    image: '/operation-red-trophy.webp',
-    date: '28 April 2026',
-    title: 'Operation Red Trophy',
-    dimmed: true,
-    description: 'A thrilling display of innovation and strategy — brilliant minds pushing boundaries under pressure.',
-  },
-  {
     image: '/tech boss(1).png',
     date: '7 September 2026',
     title: 'Tech Boss',
@@ -30,6 +15,21 @@ const EVENTS = [
     title: 'Cognito Club Recruitment 2026',
     dimmed: false,
     description: "Turn your skills and creativity into real opportunities. Open for 1st & 2nd year students.",
+  },
+  {
+    image: '/vibeathon.jpg',
+    date: '9 March 2026',
+    title: 'Vibeathon',
+    dimmed: true,
+    description:
+      "Our debut AI Build & Ship competition — ₹8,000 prize pool, insane builds, and absolute tech warriors.",
+  },
+  {
+    image: '/operation-red-trophy.webp',
+    date: '28 April 2026',
+    title: 'Operation Red Trophy',
+    dimmed: true,
+    description: 'A thrilling display of innovation and strategy — brilliant minds pushing boundaries under pressure.',
   },
 ];
 
@@ -56,7 +56,7 @@ export default function Events() {
             <h3>{ev.title}</h3>
             <p style={{ marginBottom: ev.link ? '16px' : '0' }}>{ev.description}</p>
             {ev.link && (
-              <a href={ev.link} target="_blank" rel="noreferrer" className="cta" style={{ marginTop: 'auto' }}>
+              <a href={ev.link} target="_blank" rel="noreferrer" className="cta" style={{ marginTop: 'auto', alignSelf: 'center' }}>
                 Register Now
               </a>
             )}
